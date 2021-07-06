@@ -49,7 +49,7 @@ do
 
     echo "Name cleaned to: $CLEAN_NAME, now deleting defunct job/ingress/service from k8s."
 
-    kubectl delete deployment -l app=$CLEAN_NAME --ignore-not-found=true --force --grace-period=0
+    kubectl delete deployment --ignore-not-found=true --force --grace-period=0 $CLEAN_NAME
     kubectl delete service -l app=$CLEAN_NAME --ignore-not-found=true --force --grace-period=0
     kubectl delete all,ing -l app=$CLEAN_NAME --ignore-not-found=true --force --grace-period=0
 done
